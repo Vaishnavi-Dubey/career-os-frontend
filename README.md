@@ -1,36 +1,153 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Career OS Frontend
 
-## Getting Started
+> Autonomous Career OS — A fully local, zero-cost AI dashboard for automated job search, resume tailoring, and skill roadmap generation.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Overview
+
+**Career OS Frontend** is the responsive web interface for the Autonomous Career OS platform. Built with **Next.js 16**, **React 19**, and **Tailwind CSS**, it connects to a local AI and database backend to provide job scraping, resume tailoring, GitHub analysis, and personalized learning roadmaps. It operates 100% locally with zero paid services by leveraging local AI models (via Ollama) and local databases.
+
+---
+
+## Features
+
+- **📊 Centralized Dashboard**: Real-time stats on jobs applied, resumes tailored, GitHub analysis status, and active learning plans.
+- **🔍 Job Scraping Hub**: Scrape LinkedIn, Indeed, Instahyre, and Unstop based on keywords, skills, and locations, storing jobs locally.
+- **📄 AI Resume Tailoring**: Upload a base PDF/text resume and automatically optimize it to target specific job descriptions using local LLMs.
+- **🐙 GitHub Integration**: Analyze repositories, profile stats, and automatically generate READMEs or portfolio improvements.
+- **📚 Local Learning Plans**: Generate interactive structured roadmaps for learning new technologies based on job requirements.
+
+---
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Library**: React 19
+- **Styling**: Tailwind CSS, Lucide React (Icons)
+- **API Communication**: Native fetch, Socket.io-client (for real-time scraping & agent logs)
+- **AI Models (Backend-dependent)**: Llama 3.2 (Reasoning/Fast), Nomic Embed Text (Embeddings) via local **Ollama**
+- **Databases (Backend-dependent)**: MongoDB (Jobs & Applications), ChromaDB (Vector database for semantic resume parsing)
+
+---
+
+## Folder Structure
+
+```text
+frontend/
+├── docs/
+│   └── images/
+│       ├── home.png
+│       ├── jobs.png
+│       ├── github.png
+│       ├── resume.png
+│       └── learning.png
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── github/          # GitHub analysis and README generator
+│   │   ├── jobs/            # Job board, scraper control, status board
+│   │   ├── learning/        # AI learning roadmaps and checklists
+│   │   ├── resume/          # Resume parser and tailoring module
+│   │   ├── globals.css      # Core styles & Tailwind directives
+│   │   ├── layout.tsx       # Sidebar wrapper & root layout
+│   │   └── page.tsx         # Dashboard landing page
+│   ├── components/
+│   │   ├── GitHubConnect.tsx # OAuth and status card
+│   │   └── Sidebar.jsx      # Navigation sidebar
+│   └── lib/
+│       └── api.js           # API endpoints & fetch wrapper
+├── package.json
+├── tsconfig.json
+└── next.config.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- **Node.js**: `>= 18.0.0`
+- **npm** or **yarn**
 
-To learn more about Next.js, take a look at the following resources:
+### Steps
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Navigate to the frontend directory:
+   ```bash
+   cd career-os-free/frontend
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Running the Project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Development Mode
+
+To run the Next.js app locally in development mode:
+```bash
+npm run dev
+```
+The application will be accessible at [http://localhost:3000](http://localhost:3000).
+
+### Production Build
+
+To build the application for production:
+```bash
+npm run build
+npm start
+```
+
+---
+
+## Screenshots
+
+### Dashboard
+![Dashboard](docs/images/home.png)
+
+### Job Board & Scraper
+![Job Board](docs/images/jobs.png)
+
+### GitHub Analysis
+![GitHub Integration](docs/images/github.png)
+
+### AI Resume Tailoring
+![Resume Tailoring](docs/images/resume.png)
+
+### Learning Plans
+![Learning Plans](docs/images/learning.png)
+
+---
+
+## Workflow
+
+1. **Dashboard Overview**: View your overall application metrics and quick status charts.
+2. **Scraping Jobs**: Go to **Jobs**, trigger a crawl for positions matching your profile, and see them load in real-time.
+3. **Optimizing Resumes**: Go to **Resume**, upload your current resume, click a job from the scraped list, and click "Tailor Resume" to generate a tailored copy.
+4. **GitHub Sync**: Connect your GitHub profile to analyze public contributions and generate customized repository descriptions.
+5. **Skill Roadmap**: Select target skills you are missing to instantly generate a local checklist-based study guide under **Learning**.
+
+---
+
+## Future Improvements
+
+- [ ] Add direct PDF export for tailored resumes.
+- [ ] Add dark mode support and custom theme selector.
+- [ ] Add automatic email application drafting inside the tailored page.
+
+---
+
+## Author
+
+- **GitHub Profile**: [Vaishnavi Dubey](https://github.com/Vaishnavi-Dubey)
+
+---
+
+## License
+
+This project is licensed under the MIT License.
